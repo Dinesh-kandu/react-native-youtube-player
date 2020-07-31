@@ -70,7 +70,6 @@
     "typescript": "^3.4.5"
   },
   "peerDependencies": {
-    "@react-native-community/slider": "^1.1.2",
     "react": "*",
     "react-native": "*",
     "react-native-reanimated": "*",
@@ -101,7 +100,6 @@
     ]
   },
   "dependencies": {
-    "@react-native-community/slider": "^1.1.2",
     "react-native-reanimated": "^1.0.1",
     "react-native-webview": "^5.10.0",
     "react-native-webview-invoke": "git://github.com/yjose/react-native-webview-invoke.git#fix/android_issue",
