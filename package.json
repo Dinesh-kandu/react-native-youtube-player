@@ -1,6 +1,6 @@
 {
   "name": "react-native-yt-player",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Youtube Player for React Native",
   "main": "lib/commonjs/mobile/index.js",
   "react-native": "lib/module/mobile/index.js",
@@ -65,15 +65,12 @@
     "parcel-bundler": "^1.12.3",
     "parcel-plugin-inline-source": "^1.0.0",
     "prettier": "^1.17.1",
-    "react-native-reanimated": "^1.0.1",
     "release-it": "^10.1.0",
     "typescript": "^3.4.5"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-reanimated": "*",
-    "react-native-webview": "^5.10.0",
     "react-native-webview-invoke": "^0.5.0",
     "youtube-player": "^5.5.2"
   },
@@ -100,8 +97,6 @@
     ]
   },
   "dependencies": {
-    "react-native-reanimated": "^1.0.1",
-    "react-native-webview": "^5.10.0",
     "react-native-webview-invoke": "git://github.com/yjose/react-native-webview-invoke.git#fix/android_issue",
     "youtube-player": "^5.5.2"
   }
