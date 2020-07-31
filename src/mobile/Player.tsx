@@ -13,7 +13,7 @@ import {
   PlayerDefaultProps
 } from "./types";
 import { fullScreenInterpolate, VideoSize } from "./Utils";
-import Orientation from "react-native-orientation";
+import Orientation from "react-native-orientation-locker";
 
 const IsAndroid = Platform.OS === "android";
 
