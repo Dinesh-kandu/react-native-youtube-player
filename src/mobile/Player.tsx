@@ -10,7 +10,7 @@ import {
   YTWebViewState,
   PlayerState,
   PlayerProps,
-  PlayerDefaultProps
+  PlayerDefaultProps,
 } from "./types";
 import { fullScreenInterpolate, VideoSize } from "./Utils";
 import Orientation from "react-native-orientation-locker";
@@ -31,8 +31,8 @@ export default class Player extends PureComponent<PlayerProps, PlayerState> {
       currentTime: 0,
       layout: {
         top: 0,
-        left: 0
-      }
+        left: 0,
+      },
     };
   }
   player: any;
@@ -41,13 +41,13 @@ export default class Player extends PureComponent<PlayerProps, PlayerState> {
   _isUserUsingIconToFullScreen = false;
 
   componentDidMount() {
-    Orientation.addOrientationListener(this.onRotated);
+    // Orientation.addOrientationListener(this.onRotated);
 
     BackHandler.addEventListener("hardwareBackPress", this.onBackButtonClick);
   }
 
   componentWillUnmount() {
-    Orientation.removeOrientationListener(this.onRotated);
+    // Orientation.removeOrientationListener(this.onRotated);
     BackHandler.removeEventListener(
       "hardwareBackPress",
       this.onBackButtonClick
@@ -115,41 +115,41 @@ export default class Player extends PureComponent<PlayerProps, PlayerState> {
         this.goToInlineScreen();
         if (rotateToFullScreen) Orientation.lockToPortrait();
         setTimeout(() => {
-          if (true) Orientation.unlockAllOrientations();
+          // if (true) Orientation.unlockAllOrientations();
         }, 2000);
       }
     });
   };
 
-  onRotated = orientation => {
-    if (this._isUserUsingIconToFullScreen) return;
-    Orientation.unlockAllOrientations();
-    const rotateToFullScreen = true;
-    if (rotateToFullScreen) {
-      if (orientation === "LANDSCAPE" || orientation === "PORTRAITUPSIDEDOWN") {
-        if (this.state.fullScreen) return;
-        this.setState({ fullScreen: true }, () => {
-          this.goToFullScreen();
-          Orientation.unlockAllOrientations();
-        });
-        return;
-      } else {
-        if (!this.state.fullScreen) return;
+  // onRotated = orientation => {
+  //   if (this._isUserUsingIconToFullScreen) return;
+  //   Orientation.unlockAllOrientations();
+  //   const rotateToFullScreen = true;
+  //   if (rotateToFullScreen) {
+  //     if (orientation === "LANDSCAPE" || orientation === "PORTRAITUPSIDEDOWN") {
+  //       if (this.state.fullScreen) return;
+  //       this.setState({ fullScreen: true }, () => {
+  //         this.goToFullScreen();
+  //         Orientation.unlockAllOrientations();
+  //       });
+  //       return;
+  //     } else {
+  //       if (!this.state.fullScreen) return;
 
-        this.setState(
-          {
-            fullScreen: false
-          },
-          () => {
-            this.goToInlineScreen();
-          }
-        );
-        return;
-      }
-    } else {
-      this.goToInlineScreen();
-    }
-  };
+  //       this.setState(
+  //         {
+  //           fullScreen: false
+  //         },
+  //         () => {
+  //           this.goToInlineScreen();
+  //         }
+  //       );
+  //       return;
+  //     }
+  //   } else {
+  //     this.goToInlineScreen();
+  //   }
+  // };
   onBackButtonClick = () => {
     if (this.state.fullScreen) {
       this.toggleFS();
@@ -164,7 +164,7 @@ export default class Player extends PureComponent<PlayerProps, PlayerState> {
     timing(this._width, {
       toValue: VideoSize.fullScreen.width + 2,
       duration: 200,
-      easing: Easing.inOut(Easing.ease)
+      easing: Easing.inOut(Easing.ease),
     }).start(() => StatusBar.setHidden(true));
   };
   goToInlineScreen = () => {
@@ -172,13 +172,13 @@ export default class Player extends PureComponent<PlayerProps, PlayerState> {
     timing(this._width, {
       toValue: VideoSize.inline.width,
       duration: 200,
-      easing: Easing.inOut(Easing.ease)
+      easing: Easing.inOut(Easing.ease),
     }).start(() => StatusBar.setHidden(false));
   };
   onLayout = ({
     nativeEvent: {
-      layout: { x, y }
-    }
+      layout: { x, y },
+    },
   }: any) => {
     this.setState({ layoutReady: true, layout: { top: y, left: x } });
   };
@@ -193,7 +193,7 @@ export default class Player extends PureComponent<PlayerProps, PlayerState> {
     const VideoStyle = fullScreen
       ? { ...styles.fullScreen }
       : {
-          ...styles.inline
+          ...styles.inline,
         };
 
     const AbsoluteStyle = IsAndroid ? { ...this.state.layout } : {};
@@ -206,7 +206,7 @@ export default class Player extends PureComponent<PlayerProps, PlayerState> {
       width: this._width,
       height,
       top,
-      left
+      left,
       // transform: [
       //   { translateY },
       //   { translateX },
@@ -237,7 +237,7 @@ export default class Player extends PureComponent<PlayerProps, PlayerState> {
                   toggleFS,
                   topBar,
                   showFullScreenButton,
-                  ...this.state
+                  ...this.state,
                 }}
               />
             </Animated.View>
@@ -266,7 +266,7 @@ export default class Player extends PureComponent<PlayerProps, PlayerState> {
                 toggleFS,
                 topBar,
                 showFullScreenButton,
-                ...this.state
+                ...this.state,
               }}
             />
           </Animated.View>
